@@ -1,13 +1,45 @@
 COMP 321 Project 1: Factors
-<Replace with your name and NetID.>
+<Michelle Pang, yp29>
 
 ---(Do not write lines of text that exceed the width of this line.)------------
 
 TESTING STRATEGY
 
-<Replace with a detailed description of your testing strategy.>
+1. Input's an invalid input
+    eg. n = 1
+2. Input's the smallest prime
+    eg. n = 2
+3. Input's'prime factors are the same as its non-prime factors
+    eg. n = 6
+4. Input has one distict, repeating prime factor, 
+which is equivalent to input's have only non-distict prime factor
+    eg. n = 32, n = 64, n = 128
+5. Input has prime factors that are not 2 or 3
+    eg. n = 13, n = 97
+6. Input's a large prime 
+    eg. n = 999331, n = 115249
+7. Input's a large non-prime 
+    n = 987654321
+8. Input's square of a prime 
+    eg. n = 169, n = 9
+9. Input's have only distinct prime factors
+    eg. n = 323, n = 15
+10. Input's have both distinct and non-distict prime factors
+    eg. n = 6, n = 56
+
+//Do I need more explanation? 
+More:
+These inputs are sufficient to test that I am counting only the 
+prime factors and not counting the normal factors.
+First, I divide the input n by 2, the lowest prime number, until 
+n could not be divided anymore to ensure that 
+the base case 2 works before anything else...
+
+
+
 
 SOMETHING I LEARNED
 
-<Replace with a description of one feature of C that you learned while
- completing this assignment that wasn't taught in lecture or lab.>
+<C does not have boolean data types that it uses integers for boolean testing.
+That is, there is no truth or false in C, instead, 0 is used to represent false, 
+and 1 is used to represent true.>
