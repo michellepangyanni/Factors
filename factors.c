@@ -17,11 +17,12 @@ static unsigned int	count_distinct_factors(unsigned int n);
 static unsigned int	count_factors(unsigned int n);
 static unsigned int	count_factors_recursive(unsigned int n);
 static void		test_factors(void);
+static unsigned int	count_factors_helper(unsigned int num, unsigned int factor, unsigned int counter);
+static int include(int arr[], size_t arraySize, int n);
 
-// Replace this comment with any global variable declarations.
+/* Require: 
+	The input "num" must be greater than 1.
 
-// Replace this comment with any helper functions.
-/*
 Effects:
 	Return the prime factor found by incrementing factor and dividing num by each of the factor recursively
 */
@@ -46,13 +47,18 @@ count_factors_helper(unsigned int num, unsigned int factor, unsigned int counter
 }
 
 /*
+Require: 
+	The input "n" must be greater than 1.
+
 Effect:
 	Return false if n is not in array, return truth if n is in array
 */
+
 static int
 include(int arr[], size_t arraySize, int n){
 		//int arrSize = sizeof(arr);
-		for(int i = 0; i < arraySize; i ++){
+		//int arraySize = sizeof(arr);
+		for(size_t i = 0; i < arraySize; i ++){
 				if (arr[i] == n){
 						return (1);
 				}
@@ -69,13 +75,9 @@ include(int arr[], size_t arraySize, int n){
 static unsigned int
 count_factors_recursive(unsigned int n)
 {
-	// Replace this comment with your local variable declarations.
-
 	assert(n > 1);
 	// Upper bound for the total possible number of primes
-	/*
-	 * Replace this comment with your code.
-	 */
+
 	return (count_factors_helper(n, 2, 0));
 }
 
@@ -89,7 +91,6 @@ count_factors_recursive(unsigned int n)
 static unsigned int
 count_factors(unsigned int n)
 {
-	// Replace this comment with your local variable declarations.
     int counter = 0;
 	assert(n > 1);
 	
@@ -124,8 +125,6 @@ count_factors(unsigned int n)
 static unsigned int
 count_distinct_factors(unsigned int n)
 {
-	// Replace this comment with your local variable declarations.
-
 	assert(n > 1);
 	int upper_bound = ceil(sqrt(n));
 	// Array that holds all possible primes
@@ -164,7 +163,8 @@ count_distinct_factors(unsigned int n)
 	}
 	// When n is a prime and is greater than 2
 	if(n > 2){
-			if (include(primes, upper_bound, n) == 0){
+			if (include(primes, upper_bound, n) == 0){ 
+
 					counter++;
 					primes[empty_index] = n;
 					empty_index++;
@@ -172,11 +172,6 @@ count_distinct_factors(unsigned int n)
 			
 	} 
 
-	/*
-	 * Replace this comment with your code.  Also, don't forget to modify
-	 * the following statement to return the actual number of distinct
-	 * factors.
-	 */
 	return (counter);
 }
 
