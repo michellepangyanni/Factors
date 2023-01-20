@@ -5,24 +5,50 @@ COMP 321 Project 1: Factors
 
 TESTING STRATEGY
 
-Black Box:
+Black Box Testing Strategy<
 
 1. The input is 0; should return "Invalid input: 0"
 3. The input is 1; should return "Invalid input: 1"
-4. The input is a prime (>1) that can be factorized.
+4. The input is a prime (>1) that can be factorized. 
+n = 19, n = 59 satisfy this test
 5. The input is a composite (non-prime) that can be factorized.
+n = 6, n = 98, n = 987 satisfy 
 6. The input's factorization includes more than one distinct prime
+n = 6, n = 36, n = 27405, n = 264264 satisfy
 7. The input's factorization includes repeats
+n =  27405, n = 27000, n = 1125 satisfy
 8. The input's factorization includes non-repeats
-8. The input is a prime that is too large to be factorized.
-9. The input is a composite that is too large to be factorized.
-10. The input is a very large (> 10000) prime that can be factorized.
-11. The input is a very large (> 10000) composite that can factorized.
+n = 210, n = 30, n = 63 satisfy
+9. The input is a prime that is too large to be factorized.
+n = 4294967297 satisfy
+10. The input is a composite that is too large to be factorized.
+n = 4294967298 satisfy
+11. The input is a small prime that can be factorized
+n = 2, n = 3, n = 5, n = 7 satisfy
+12. The input is a small composite that can be factorized
+n = 4， n = 6, n = 8 satisfy
+13. The input is a prime that has a great number of one distinct prime factor and few(1 or 2) other prime factors
+n = 1701, n = 46875 satisfy
+14. The input is a composite that has a great number of one distinct prime factor and few(1 or 2) other prime factors
+n = 384,n = 486 satisfy
+15. The input is a large prime that has a large number of distinct prime factors --> also test in count factors
+n = 654729075, n = 41895 satisfy
+16. The input is a composite that has many factors, among which only one of them is prime
+n = 512, n = 4096 satisfy
+17. The input is a very large (> 10000) prime that can be factorized.
+n = 4294967295 satisfy
+18. The input is a very large (> 10000) composite that can factorized.
+n = 4294967294 satisfy
+>
 
-White Box: (categorized by function)
+White Box Testing Strategy(categorized by function): <
+--> if count the factor one more time/less than one time. 
+--> test entry and bound of while loop and for loop
 
 For count_factors_recursive：
-    1. input's the smallest prime, 2, to test if the last prime is reached for the base case in count_factors_helper function 
+
+    1. input's the smallest prime, 2, to test if the last prime is reached for the base case 
+    in count_factors_helper function and is not counting prime factors one less time.
     2. input's a large non-prime, to ensure the first case in the recursive step 
     -- when input is not prime, it is still divisible by factor of 2 -- works
     eg. n = 4294967295, n = 987654321
@@ -31,26 +57,54 @@ For count_factors_recursive：
 		that its only prime factor is itself.
         eg. n = 999331, n = 115249
     4. input = 1 or input = 0, should return "Invalid input: 1" or "Invalid input: 0"
+    5. input only has one distinct prime factor that repeats
+      eg. n = 32, n = 64, n = 128
+    6. The input is a large prime that has a large number of distinct prime factors
+      eg. n = 654729075, n = 41895
 
 For count_factors:
-    1. input's the smallest prime, 2, to test that the input's last prime is reached and counted
+
+    1. input's the smallest prime, 2, to test that the input's last prime is reached and counted in the while-loop.
     2. input's an odd number to ensure that every odd input's primes factors can be counted through the 
     for-loop in count_factors correctly
     eg. 59, 77
     2. input's an even number to ensure that every even's prime factors can be counted. 
     eg. 22, 36
-    4. Input has prime factors that are not 2 or 3, to test the last condition that n > 2 and n is its own prime factor
+    4. input has prime factors that are not 2 or 3, to test the last condition that n > 2 and n is its own prime factor
     eg. n = 13, n = 97
+    5. input only has one distinct prime factor that repeats
+      eg. n = 32, n = 64, n = 128
+    6. The input is a large prime that has a large number of distinct prime factors
+    eg. n = 654729075, n = 41895
 
 For count_distinct_factors:
-    1. Input's only have distinct prime factors to test that we are not counting all the normal prime factors of n.
+
+    1. input is the square of a prime factor to test for the upper bound in both the for-loop that generates prime array and 
+    the for-loop that count the number of odd primes. 
+    eg. n = 49, n = 289, n = 841
+    2. input is the square of a composite factor to test for the upper bound in both the for-loop that generates prime array and 
+    the for-loop that count the number of odd primes.
+    eg. n = 64, n = 256
+    3. input's only have distinct prime factors to test that we are not counting all the normal prime factors of n.
     eg. n = 323, n = 15
-    2. Input has both distinct and non-distict prime factors to test that these two types of primes can be counted separately
+    4. input has both distinct and non-distict prime factors to test that these two types of primes can be counted separately
     eg. n = 99, n = 56
-    3. Input has one distict, repeating prime factor, which is equivalent 
+    5. input has one distict, repeating prime factor, which is equivalent 
     to input's have only non-distict prime factor, to test that the function 
     also works for numbers that only have one prime factor so that only 1 factor is distinct.
     eg. n = 32, n = 64, n = 128
+    6. input is a large prime that has a large number of distinct prime factors
+    eg. n = 654729075, n = 41895
+    7. input's the smallest prime, 2, to test that the input's last prime is reached and counted 
+    when n become a prime and is greater than 2
+    8. input's an odd number to ensure that every odd input's primes factors can be counted through the 
+    for-loop in count_factors correctly
+    eg. 59, 77
+    9. input's an even number to ensure that every even's prime factors can be counted. 
+    eg. 22, 36
+    10. input has prime factors that are not 2 or 3, to test the last condition that n > 2 and n is its own prime factor
+    eg. n = 13, n = 97
+    >
 
          
 SOMETHING I LEARNED
