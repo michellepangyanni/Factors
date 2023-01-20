@@ -27,11 +27,14 @@ n = 4294967298 satisfy
 n = 2, n = 3, n = 5, n = 7 satisfy
 12. The input is a small composite that can be factorized
 n = 4， n = 6, n = 8 satisfy
-13. The input is a prime that has a great number of one distinct prime factor and few(1 or 2) other prime factors
+13. The input is a prime that has a great number of one distinct prime factor 
+and few(1 or 2) other prime factors
 n = 1701, n = 46875 satisfy
-14. The input is a composite that has a great number of one distinct prime factor and few(1 or 2) other prime factors
+14. The input is a composite that has a great number of one distinct prime 
+factor and few(1 or 2) other prime factors
 n = 384,n = 486 satisfy
-15. The input is a large prime that has a large number of distinct prime factors --> also test in count factors
+15. The input is a large prime that has a large number of distinct prime 
+factors --> also test in count factors
 n = 654729075, n = 41895 satisfy
 16. The input is a composite that has many factors, among which only one of them is prime
 n = 512, n = 4096 satisfy
@@ -42,8 +45,6 @@ n = 4294967294 satisfy
 >
 
 White Box Testing Strategy(categorized by function): <
---> if count the factor one more time/less than one time. 
---> test entry and bound of while loop and for loop
 
 For count_factors_recursive：
 
@@ -52,8 +53,9 @@ For count_factors_recursive：
     2. input's a large non-prime, to ensure the first case in the recursive step 
     -- when input is not prime, it is still divisible by factor of 2 -- works
     eg. n = 4294967295, n = 987654321
-    3. input's a large prime, to make sure my iterative method is complete and efficient in the recursive step 
-    -- when the input could be prime, then increment counter until we find Case1 or find that num is prime
+    3. input's a large prime, to make sure my iterative method is complete and efficient in the 
+    recursive step -- when the input could be prime, then increment counter until we find Case1 
+    or find that num is prime
 		that its only prime factor is itself.
         eg. n = 999331, n = 115249
     4. input = 1 or input = 0, should return "Invalid input: 1" or "Invalid input: 0"
@@ -64,13 +66,15 @@ For count_factors_recursive：
 
 For count_factors:
 
-    1. input's the smallest prime, 2, to test that the input's last prime is reached and counted in the while-loop.
-    2. input's an odd number to ensure that every odd input's primes factors can be counted through the 
-    for-loop in count_factors correctly
+    1. input's the smallest prime, 2, to test that the input's last prime is reached 
+    and counted in the while-loop.
+    2. input's an odd number to ensure that every odd input's primes factors can be 
+    counted through the for-loop in count_factors correctly
     eg. 59, 77
     2. input's an even number to ensure that every even's prime factors can be counted. 
     eg. 22, 36
-    4. input has prime factors that are not 2 or 3, to test the last condition that n > 2 and n is its own prime factor
+    4. input has prime factors that are not 2 or 3, to test the last condition 
+    that n > 2 and n is its own prime factor
     eg. n = 13, n = 97
     5. input only has one distinct prime factor that repeats
       eg. n = 32, n = 64, n = 128
@@ -79,15 +83,19 @@ For count_factors:
 
 For count_distinct_factors:
 
-    1. input is the square of a prime factor to test for the upper bound in both the for-loop that generates prime array and 
+    1. input is the square of a prime factor to test for the upper bound in both the 
+    for-loop that generates prime array and 
     the for-loop that count the number of odd primes. 
     eg. n = 49, n = 289, n = 841
-    2. input is the square of a composite factor to test for the upper bound in both the for-loop that generates prime array and 
+    2. input is the square of a composite factor to test for the upper bound in both 
+    the for-loop that generates prime array and 
     the for-loop that count the number of odd primes.
     eg. n = 64, n = 256
-    3. input's only have distinct prime factors to test that we are not counting all the normal prime factors of n.
+    3. input's only have distinct prime factors to test that we are not counting all the 
+    normal prime factors of n.
     eg. n = 323, n = 15
-    4. input has both distinct and non-distict prime factors to test that these two types of primes can be counted separately
+    4. input has both distinct and non-distict prime factors to test that these two types 
+    of primes can be counted separately
     eg. n = 99, n = 56
     5. input has one distict, repeating prime factor, which is equivalent 
     to input's have only non-distict prime factor, to test that the function 
@@ -102,13 +110,19 @@ For count_distinct_factors:
     eg. 59, 77
     9. input's an even number to ensure that every even's prime factors can be counted. 
     eg. 22, 36
-    10. input has prime factors that are not 2 or 3, to test the last condition that n > 2 and n is its own prime factor
+    10. input has prime factors that are not 2 or 3, to test the last condition that 
+    n > 2 and n is its own prime factor
     eg. n = 13, n = 97
     >
-
          
-SOMETHING I LEARNED
+SOMETHING I LEARNED< 
 
-<C does not have boolean data types that it uses integers for boolean testing.
+First thing I learned while working on the helper function "include" is that C does not have boolean data 
+types -- it uses integers for boolean testing.
 That is, there is no truth or false in C, instead, 0 is used to represent false, 
-and 1 is used to represent true.>
+and 1 is used to represent true.
+
+Then when I was using a for-loop to iterate through an array, I got the error with message"comparison of integers 
+of different signs: 'int' and 'size_t' (aka 'unsigned long')". So I learned that the array length in C accesses to pointer, 
+so I must explicitly pass the size of the array to the input of this function by using size_t type.
+  >

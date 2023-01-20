@@ -53,16 +53,16 @@ Require:
 Effect:
 	Return false if n is not in array, return truth if n is in array
 */
-
 static int
 include(int arr[], size_t arraySize, int n){
-		//int arrSize = sizeof(arr);
-		//int arraySize = sizeof(arr);
+		//Loop through the array to see if n is in the array
 		for(size_t i = 0; i < arraySize; i ++){
 				if (arr[i] == n){
+						//return true if n is in the array
 						return (1);
 				}
 		}
+		//return fase if n is not in the array
 		return (0);
 }
 /* 
